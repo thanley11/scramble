@@ -1,14 +1,10 @@
 {% extends "scramble/base.html" %}
-{% load static %}
-<html>
-<head>
+{% block title %}Welcome to Scramble{% endblock %}
 
-<title>
-Hello World
-</title>
+{% block body_block %}
 
-</head>
-<body>
-
-</body>
-</html>
+<p>Hello</p>
+<a href="/scramble/test/">Test Page</a>
+<br />
+<a href="/scramble/about/">About Page</a>
+{% endblock %}
