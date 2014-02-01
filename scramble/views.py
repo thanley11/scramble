@@ -20,4 +20,10 @@ def test(request):
     context = RequestContext(request)
     context_dict = {}
     
-    return render_to_response("scramble/test.html", context_dict, context)        
+    return render_to_response("scramble/test.html", context_dict, context)     
+    
+def caro(request):
+    context = RequestContext(request)
+    context_dict = {}
+    
+    return render_to_response("scramble/caro.html", context_dict, context)     
