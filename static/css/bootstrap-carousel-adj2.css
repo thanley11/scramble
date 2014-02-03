@@ -30,7 +30,7 @@
     
 .carousel {
   position: relative;
-  margin-bottom: 18px;
+  margin-bottom: 60px;
   line-height: 1;
 }
 
@@ -140,3 +140,14 @@
 .carousel-caption p {
   color: #ffffff;
 }
+
+    .marketing .span4 {
+      text-align: center;
+    }
+    .marketing h2 {
+      font-weight: normal;
+    }
+    .marketing .span4 p {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
