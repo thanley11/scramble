@@ -1,75 +1,77 @@
-{% load static %}
 <!DOCTYPE html>
+{% load static %}
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link href="{% static 'css/bootstrap-fluid-adj.css' %}" rel="stylesheet">
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
-    <link href="{% static 'css/bootstrap-responsive.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap2.css' %}" rel="stylesheet" media="screen">
+       <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+   <link href="{% static 'css/bootstrap-responsive2.css' %}" rel="stylesheet">
+   <link href="{% static 'css/bootstrap-carousel-adj2.css' %}" rel="stylesheet">
+<!-- If you add the bootstrap-carousel-adj.css, it breaks the file -->
 
-    <title>Scramble</title>
+    <title> Scramble Carousel </title>
+
 </head>
-
 <body>
-<div class="navbar navbar-inverse navbar-fixed-top">
-   <div class="navbar-inner">
-       <div class="container">
-           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-               <span class="icon-bar"></span>
-               <span class="icon-bar"></span>
-               <span class="icon-bar"></span>
-           </button>
-           <a class="brand" href="/scramble/">Scramble</a>
 
-           <div class="nav-collapse collapse">
-
-           </div>
-           <!--/.nav-collapse -->
-       </div>
-   </div>
-</div>
-<div class="container-fluid">
-    <div class="row-fluid">
-        <div class="span3">
-            <div class="well sidebar-nav">
-				<ul class="nav nav-list">
-                    <li></li>
-                    <li></li>
-                    {% block navbar %}
-					{% endblock %}
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/scramble/">Scramble</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="active"><a href="/scramble/">Home</a></li>
+              <li><a href="/scramble/about/">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      Dropdown
+                      <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header">Nav header</li>
+                    <li><a href="#">Separated link</a></li>
+                    <li><a href="#">One more separated link</a></li>
                 </ul>
-                    
-                <ul class="nav nav-list">
-					
-                    <form>
-                    <label></label>
-					<li></li>
-                    </form>
-				</ul>
-
-                 </div>
-            </div>
-            <!--/.well -->
-        </div>
-        <!--/span-->
-        <div class="span9">
-            {% block body_block %}
-            {% endblock %}
-        </div>
-        <!--/span-->
-    </div>
-    <!--/row-->
-</div>
-<!--/.fluid-container-->
-
+              </li><!-- dropdown -->
+            </ul><!-- /.nav -->
+          </div><!--/.nav-collapse -->
+        </div><!-- /.container -->
+      </div><!-- /.navbar-inner -->
+    </div><!-- /.navbar -->
+{% block body_block %} <!-- index.html -->
+{% endblock %}
 <hr>
+      <!-- FOOTER -->
 <footer>
     <div class="container">
         <p>&copy; Scramble 2014</p>
     </div>
 </footer>
-	<script src="{% static 'js/jquery-2.1.0.min.js' %}"></script>
+	  <script src="{% static 'js/jquery-2.1.0.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script>
+  $(document).ready(function(){
+    $('.carousel').carousel({
+    	interval: 0
+    });
+  });
+</script>
+<script src="{% static 'js/holder/holder.js' %}"></script>
 </body>
 </html>
