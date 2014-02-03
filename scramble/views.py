@@ -16,14 +16,9 @@ def about(request):
     
     return render_to_response("scramble/about.html", context_dict, context)    
 
-def test(request):
+def login(request):
     context = RequestContext(request)
     context_dict = {}
     
-    return render_to_response("scramble/test.html", context_dict, context)     
+    return render_to_response("scramble/login.html", context_dict, context)     
     
-def caro(request):
-    context = RequestContext(request)
-    context_dict = {}
-    
-    return render_to_response("scramble/caro.html", context_dict, context)     
