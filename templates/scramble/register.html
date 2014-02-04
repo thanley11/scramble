@@ -1,0 +1,37 @@
+{% extends 'scramble/base.html' %}
+{% block title %}Register with Scramble{% endblock %}
+
+{% block body_block %}
+<div class="hero-unit">
+	<h1>Register with Scramble</h1>
+	<br />
+	<div class="container">
+		{% if registered %}
+		<p><strong>Thank you for registering!</strong></p>
+		<a href="/scramble/">Return to the homepage.</a><br />
+		{% else %}
+		<form class = "form-register span8" id="user_form" method="post" action="/scramble/register/"
+                enctype="multipart/form-data">
+			
+                {% csrf_token %}
+                    <h2 class="form-register-heading">Sign up Here</h2>
+                    {% for field in user_form.visible_fields %}
+                    {{ field.errors }}
+                    {{ field.help_text }} <br />
+                    {{ field }} <br />
+                    {% endfor %}
+                    
+                    {% for field in profile_form.visible_fields %}
+                    {{ field.errors }}
+                    {{ field.help_text }} <br />
+                    {{ field }} <br />
+                    {% endfor %}
+			
+                    <br />
+			
+                    <input class="btn btn-primary" type="submit" name="submit" value="Register" />
+             </form>
+        {% endif %}
+	</div>
+</div>
+{% endblock %}

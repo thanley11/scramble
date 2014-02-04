@@ -1,5 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-class Knight(models.Model):
-    name = models.CharField(max_length=100)
-    of_the_round_table = models.BooleanField()
+class UserProfile(models.Model):
+    user = models.OneToOneField(User)
+    
+    def __unicode__(self):
+        return self.user.username
