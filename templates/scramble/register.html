@@ -3,16 +3,14 @@
 
 {% block body_block %}
 <div class="hero-unit">
-	<h1>Register with Scramble</h1>
-	<br />
+
 	<div class="container">
 		{% if registered %}
 		<p><strong>Thank you for registering!</strong></p>
-		<a href="/scramble/">Return to the homepage.</a><br />
+		<a href="/scramble/">Return to the homepage and login</a><br />
 		{% else %}
-		<form class = "form-register span8" id="user_form" method="post" action="/scramble/register/"
+		<form class = "form-signin" id="user_form" method="post" action="/scramble/register/"
                 enctype="multipart/form-data">
-			
                 {% csrf_token %}
                     <h2 class="form-register-heading">Sign up Here</h2>
                     {% for field in user_form.visible_fields %}

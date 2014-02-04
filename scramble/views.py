@@ -21,6 +21,12 @@ def about(request):
     
     return render_to_response("scramble/about.html", context_dict, context)    
 
+def dashboard(request):
+    context = RequestContext(request)
+    context_dict = {}
+    
+    return render_to_response("scramble/dashboard.html", context_dict, context)    
+    
 def signin(request):
     context = RequestContext(request)
     context_dict = {}
@@ -34,7 +40,7 @@ def signin(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect('/scramble')
+                return HttpResponseRedirect('/scramble/dashboard')
             else:
                 context_dict['disabled_account'] = True
                 return render_to_response("scramble/signin.html", context_dict, context)
@@ -45,7 +51,12 @@ def signin(request):
             return render_to_response("scramble/signin.html", context_dict, context)
     else:        
         return render_to_response("scramble/signin.html", context_dict, context)     
-    
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect('/scramble/')
+        
 def register(request):
     context = RequestContext(request)
     context_dict = {}

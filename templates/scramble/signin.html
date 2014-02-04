@@ -5,12 +5,10 @@
     {% block body_block %}
 
 <div class="hero-unit">
-		<h1>Login to Scramble</h1>
 		<div class="container">
-			<form class="form-signin span4" id="login_form" method="POST" action="/scramble/signin/">
-				<h2 class="form-signin-heading">Please sign in</h2>
+			<form class="form-signin" id="login_form" method="POST" action="/scramble/signin/">
+				<h3 class="form-signin-heading">Please sign in</h3>
 				{% csrf_token %}
-				
 				{% if bad_details %}
 				<p><strong>Your username and/or password were incorrect!</strong></p>
 				{% elif disabled_account %}
@@ -21,7 +19,11 @@
 				Password <input type ="password" class="input-block-level" name="password" value="" size="50" />
 				<br />
 				<button class="btn btn-primary" type="submit">Sign in </button>
+                <br />
+                <br />
+                <h6>Not registered? Click <a href="/scramble/register/">here</a></h6>
 			</form>	
+
 		</div>
 </div>
     {% endblock %}

@@ -35,17 +35,14 @@
             <ul class="nav">
               <li class="active"><a href="/scramble/">Home</a></li>
               <li><a href="/scramble/about/">About</a></li>
-              <li><a href="#contact">Contact</a></li>
             <ul class="nav pull-right">
-                  <!-- {% if user.is_authenticated %}
+                  {% if user.is_authenticated %}
                     <li class="navbar-text">Welcome, {{ user.username }}!</li>
-                    <li><a href="/rango/profile/">Profile</a></li>
-                    <li><a href="/rango/logout/">Logout</a></li>
+                    <li><a href="/scramble/logout/">Logout</a></li>
                    {% else %}
-                   -->
                     <li><a href="/scramble/register">Register</a></li>
                     <li><a href="/scramble/signin/">Sign In</a></li>
-                  <!-- {% endif %} -->
+                    {% endif %}
                </ul>
               
               <li class="dropdown">
