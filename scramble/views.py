@@ -21,6 +21,7 @@ def about(request):
     
     return render_to_response("scramble/about.html", context_dict, context)    
 
+@login_required  
 def dashboard(request):
     context = RequestContext(request)
     context_dict = {}
