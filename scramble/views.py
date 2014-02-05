@@ -11,7 +11,7 @@ from django.contrib.auth.models import User
 # Create your views here.
 def index(request):
     context = RequestContext(request)
-    context_dict = {'hellotext':"hello text"}
+    context_dict = {}
     
     return render_to_response("scramble/index.html", context_dict, context)
     
@@ -83,3 +83,9 @@ def register(request):
     context_dict['user_form'] = user_form
     context_dict['registered'] = registered
     return render_to_response("scramble/register.html", context_dict, context)
+    
+def new_scramble(request):
+        context = RequestContext(request)
+        context_dict = {}
+        
+        return render_to_response("scramble/new_scramble.html", context_dict, context)    

@@ -1,7 +1,39 @@
-{% extends "scramble/base.html" %}
+{% extends "scramble/base.html", "scramble/dashboard.html" %}
 {% load static %}    
 
 
 {% block body_block %}
-<p> Dashboard page</p>
+<div class="container-fluid">
+
+
+    <div class="row-fluid">
+        <div class="span3">
+            <div class="well sidebar-nav">
+				<ul class="nav nav-list">
+                    <li></li>
+                    <li></li>
+                    {% block navbar %}
+					{% endblock %}
+                </ul>
+                    
+                <ul class="nav nav-list">
+                <li class ="nav-header"> <a href="/scramble/new_scramble/">New Scramble </a></li>
+                <li class ="nav-header"> <a href="/scramble/friends/">Friends </a></li>
+                <li class ="nav-header"> <a href="/scramble/history/">History </a></li>
+                </ul>
+                </div>
+            <!--/.well -->
+        </div>
+        <!--/span-->
+        <div class="span9">
+        {% block dash_block %}
+       <!--Lefthand side menu opens pages here-->
+        {% endblock %}
+        </div>
+        <!--/span-->
+    </div>
+
+    <!--/row-->
+</div>
+<!--/.fluid-container-->
 {% endblock %}
