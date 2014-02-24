@@ -84,6 +84,7 @@ def register(request):
     context_dict['registered'] = registered
     return render_to_response("scramble/register.html", context_dict, context)
     
+@login_required
 def new_scramble(request):
         context = RequestContext(request)
         context_dict = {}

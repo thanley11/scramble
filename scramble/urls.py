@@ -9,6 +9,7 @@ urlpatterns = patterns('',
          url(r'^signin/$', views.signin, name='signin'),
          url(r'^register/$', views.register, name='register'),
          url(r'^logout/$', views.user_logout, name="logout"),
-         url(r'^dashboard/$', views.dashboard, name="dashboard"),         
+         url(r'^dashboard/$', views.dashboard, name="dashboard"),   
+                url(r'^dashboard/new_scramble/$', views.new_scramble, name="new_scramble"),         
          url(r'^new_scramble/$', views.new_scramble, name="new_scramble"), 
 )
