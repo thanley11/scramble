@@ -90,3 +90,30 @@ def new_scramble(request):
         context_dict = {}
         
         return render_to_response("scramble/new_scramble.html", context_dict, context)    
+        
+@login_required
+def friends(request):
+        context = RequestContext(request)
+        context_dict = {}
+        
+        return render_to_response("scramble/friends.html", context_dict, context)    
+        
+@login_required
+def history(request):
+        context = RequestContext(request)
+        context_dict = {}
+        
+        return render_to_response("scramble/history.html", context_dict, context)   
+        
+@login_required
+def profile(request):
+        context = RequestContext(request)
+        context_dict = {}
+        return render_to_response("scramble/profile.html", context_dict, context)      
+        
+@login_required
+def courses(request):
+        context = RequestContext(request)
+        context_dict = {}
+        
+        return render_to_response("scramble/courses.html", context_dict, context)           
