@@ -5,13 +5,28 @@
 {% block dash_block %}
 <div class="hero-unit">
 <h1> New scramble </h1>
-    <div class="span9">
+<br />
+	<div class="container">
+   		 <div class="span9">
     
-    <p>Please title your scramble
-    <input type="text" name="title"></input>
-    </p>
+   		 <form class="span6" id="course_form" method="post" action="/scramble/dashboard/new_scramble/">
+   		 
+   		 	{% csrf_token %}
+   		 	{% for hidden in form.hidden_fields %}
+   		 		{{ hidden }}
+   		 	{% endfor %}
+   		 	
+   		 	{% for field in form.visible_fields %}
+   		 	{{ field.errors }} <br/>
+   		 	{{ field.help_text }}
+   		 	{{ field }}
+   		 	{% endfor %}
+   		 	<br/>
+   		 
+   		 	<input class="btn btn-primary" type="submit" name="submit" value="Add a Course"></input>
+    	</form>
+    	 </div>
     </div>
-    
 </div>
 
 

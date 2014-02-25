@@ -6,3 +6,12 @@ class UserProfile(models.Model):
     
     def __unicode__(self):
         return self.user.username
+        
+class Course(models.Model):
+	name 		= models.CharField(max_length=128, unique=True)
+	#par  		= models.IntegerField(default=0)
+	#handicap 	= models.IntegerField(default=0)
+	#location 	= models.CharField(max_length=128)
+	
+	def __unicode__(self):
+		return self.name

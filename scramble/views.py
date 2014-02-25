@@ -1,8 +1,8 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
 from django.shortcuts import render_to_response
-from scramble.models import UserProfile
-from scramble.forms import UserForm
+from scramble.models import UserProfile, Course
+from scramble.forms import UserForm, CourseForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -86,10 +86,23 @@ def register(request):
     
 @login_required
 def new_scramble(request):
-        context = RequestContext(request)
-        context_dict = {}
-        
-        return render_to_response("scramble/new_scramble.html", context_dict, context)    
+	context = RequestContext(request)
+	
+	context_dict = {}
+	
+	if request.method == 'POST':
+		form = CourseForm(request.POST)
+		
+		if form.is_valid():
+			form.save(commit=True)
+			return index(request)
+		else:
+			print form.errors
+	else:
+		form = CourseForm()
+	
+	context_dict['form'] = form
+	return render_to_response('scramble/new_scramble.html', context_dict, context)  
         
 @login_required
 def friends(request):
@@ -116,4 +129,4 @@ def courses(request):
         context = RequestContext(request)
         context_dict = {}
         
-        return render_to_response("scramble/courses.html", context_dict, context)           
+        return render_to_response("scramble/courses.html", context_dict, context)     

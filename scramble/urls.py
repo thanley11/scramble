@@ -15,5 +15,5 @@ urlpatterns = patterns('',
                 url(r'^dashboard/history/$', views.history, name="history"),
                 url(r'^dashboard/profile/$', views.profile, name="profile"),
                 url(r'^dashboard/courses/$', views.courses, name="courses"),
-         url(r'^new_scramble/$', views.new_scramble, name="new_scramble"), 
+                url(r'^dashboard/courses/$', views.courses, name="courses"),
 )
