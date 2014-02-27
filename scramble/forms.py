@@ -20,6 +20,4 @@ class CourseForm(forms.ModelForm):
     
     class Meta:
         model = Course
-        fields = ('name','par','handicap','location')  
-
-        
+        fields = ('name','par','handicap','location') 
