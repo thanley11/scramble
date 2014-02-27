@@ -28,6 +28,13 @@ def dashboard(request):
     
     return render_to_response("scramble/dashboard.html", context_dict, context)    
     
+@login_required   
+def players(request):
+    context = RequestContext(request)
+    context_dict = {}
+    
+    return render_to_response("scramble/players.html", context_dict, context)  
+    
 def signin(request):
     context = RequestContext(request)
     context_dict = {}
