@@ -9,7 +9,7 @@
 	<div class="container">
    		 <div class="span9">
     
-   		 <form class="span6" id="course_form" method="post" action="/scramble/dashboard/players/">
+   		 <form class="span6" id="course_form" method="post" action="/scramble/dashboard/new_scramble/">
    		 
    		 	{% csrf_token %}
    		 	{% for hidden in form.hidden_fields %}
