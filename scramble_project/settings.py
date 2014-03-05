@@ -53,7 +53,12 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'scramble',
     'south',
+    'rest_framework',
 )
+
+REST_FRAMEWORK = {
+    'PAGINATE_BY': 10
+}
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

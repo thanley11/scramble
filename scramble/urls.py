@@ -1,7 +1,5 @@
 from django.conf.urls import patterns, include, url
 from scramble import views
-from django.conf import settings
-
 
 urlpatterns = patterns('',
          url(r'^$', views.index, name='index'),
@@ -15,5 +13,5 @@ urlpatterns = patterns('',
                 url(r'^dashboard/history/$', views.history, name="history"),
                 url(r'^dashboard/profile/$', views.profile, name="profile"),
                 url(r'^dashboard/courses/$', views.courses, name="courses"),
-                url(r'^dashboard/players/$', views.players, name="players"),
+                url(r'^dashboard/players/$', views.players, name="players"),     
 )
