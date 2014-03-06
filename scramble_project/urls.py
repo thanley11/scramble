@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 from scramble import views
+from snippets import views
 from django.conf import settings
 from django.contrib import admin
 admin.autodiscover()
@@ -9,6 +10,7 @@ urlpatterns = patterns('',
     # url(r'^$', 'helloworld.views.home', name='home'),
       url(r'^admin/', include(admin.site.urls)),
       url(r'^scramble/', include('scramble.urls')),
+      url(r'^snippets/', include('snippets.urls')),
 )
 
 if settings.DEBUG:

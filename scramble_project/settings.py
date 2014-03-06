@@ -54,6 +54,7 @@ INSTALLED_APPS = (
     'scramble',
     'south',
     'rest_framework',
+    'snippets',
 )
 
 REST_FRAMEWORK = {
