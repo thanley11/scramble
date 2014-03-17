@@ -18,7 +18,7 @@ PROJECT_PATH = os.path.abspath(PROJECT_PATH)
 
 TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
 STATIC_PATH = os.path.join(PROJECT_PATH,'static')
-DATABASE_PATH = os.path.join(PROJECT_PATH, 'sqlite.db')
+DATABASE_PATH = os.path.join(PROJECT_PATH, 'mydb')
 
 
 print "Settings directory:", SETTINGS_DIR
@@ -34,11 +34,11 @@ print "DB:", DATABASE_PATH
 SECRET_KEY = '41)4w^%fs4(8i#+yfl1=uk6nl38p(@26hx+w$)+2o90^3hjr7p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.tcharleshanley.com']
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -80,8 +80,12 @@ WSGI_APPLICATION = 'scramble_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': DATABASE_PATH,
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'mydb',
+        'USER': 'guest',
+        'PASSWORD': 'monkey',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -109,6 +113,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
+STATIC_ROOT = os.path.join(PROJECT_PATH,'static-files')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (

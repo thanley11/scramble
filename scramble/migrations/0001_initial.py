@@ -19,6 +19,9 @@ class Migration(SchemaMigration):
         db.create_table(u'scramble_course', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=128)),
+            ('par', self.gf('django.db.models.fields.IntegerField')(default=0)),
+            ('handicap', self.gf('django.db.models.fields.IntegerField')(default=0)),
+            ('location', self.gf('django.db.models.fields.CharField')(default=None, max_length=128, blank=True)),
         ))
         db.send_create_signal(u'scramble', ['Course'])
 
@@ -70,8 +73,11 @@ class Migration(SchemaMigration):
         },
         u'scramble.course': {
             'Meta': {'object_name': 'Course'},
+            'handicap': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '128'})
+            'location': ('django.db.models.fields.CharField', [], {'default': 'None', 'max_length': '128', 'blank': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '128'}),
+            'par': ('django.db.models.fields.IntegerField', [], {'default': '0'})
         },
         u'scramble.userprofile': {
             'Meta': {'object_name': 'UserProfile'},
