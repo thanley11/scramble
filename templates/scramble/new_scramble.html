@@ -4,7 +4,8 @@
 
 {% block dash_block %}
 <div class="hero-unit">
-<h1> New scramble </h1>
+<br/>
+<h2> New scramble </h2>
 <br />
 	<div class="container">
    		 <div class="span9">
@@ -17,7 +18,7 @@
    		 	{% endfor %}
    		 	
    		 	{% for field in form.visible_fields %}
-   		 	{{ field.help_text }}
+   		 	
    		 	{{ field }}
             {{ field.errors }} <br/>
    		 	{% endfor %}

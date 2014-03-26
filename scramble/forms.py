@@ -13,10 +13,14 @@ class UserForm(forms.ModelForm):
         fields = ('username','email','password')
   
 class CourseForm(forms.ModelForm):
-    name = forms.CharField(help_text="Please enter the course name.")
-    par = forms.IntegerField(help_text="Please enter a par.")
-    handicap = forms.IntegerField(help_text="Please enter a handicap.")
-    location = forms.CharField(help_text="Please enter the course location.")
+    name = forms.CharField(label='name',
+                            widget=forms.TextInput(attrs={'placeholder': 'Name of Scramble'}))
+    par = forms.IntegerField(label='par',
+                            widget=forms.TextInput(attrs={'placeholder': 'Enter a par here'}))
+    handicap = forms.IntegerField(label='handicap',
+                            widget=forms.TextInput(attrs={'placeholder': 'Enter a handicap here'}))
+    location = forms.CharField(label='location',
+                            widget=forms.TextInput(attrs={'placeholder': 'Enter a course location here'}))
     
     class Meta:
         model = Course
