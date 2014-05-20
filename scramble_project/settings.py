@@ -34,7 +34,7 @@ print "DB:", DATABASE_PATH
 SECRET_KEY = '41)4w^%fs4(8i#+yfl1=uk6nl38p(@26hx+w$)+2o90^3hjr7p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = True
 
