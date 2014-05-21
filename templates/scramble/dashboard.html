@@ -5,7 +5,7 @@
 {% block body_block %}
 <div class="container-fluid">
 
-
+    {% if user.is_authenticated %}
     <div class="row-fluid">
         <div class="span3">
             <div class="well sidebar-nav">
@@ -24,17 +24,18 @@
         <!--/span-->
         <div class="span9">
         {% block dash_block %}
-<div class="hero-unit">
-     <br/>
-        <p><h2> Please select an option on the left-hand menu</h2></p>
+        <div class="hero-unit">
+         <br/>
+            <p><h2> Please select an option on the left-hand menu</h2></p>
         </div>
        <!--Lefthand side menu opens pages here-->
         {% endblock %}
         </div>
         <!--/span-->
     </div>
-
+    {% endif %}
     <!--/row-->
 </div>
+
 <!--/.fluid-container-->
 {% endblock %}
