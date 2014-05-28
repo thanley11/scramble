@@ -6,3 +6,10 @@ book/_build/
 *.tmpproj
 *.db
 .DS_Store
+wsgi.py
+uwsgi_scramble.ini
+uwsgi_params
+scramble.ini
+nginx_scramble.conf
+index.html
+static-files/
