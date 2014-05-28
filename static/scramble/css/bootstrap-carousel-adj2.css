@@ -152,9 +152,7 @@
       margin-right: 10px;
     }
     
-.navbar .nav > li > a {
- float:right;
-}
+
 
 @media (max-width: 639px) {
     .navbar-collapse {
