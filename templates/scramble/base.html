@@ -36,6 +36,9 @@
             <ul class="nav">
               <li class="active"><a href="/scramble/">Home</a></li>
               <li><a href="/scramble/about/">About</a></li>
+              {% if user.is_authenticated %}
+              <li><a href="/scramble/dashboard/">Dashboard</a></li>
+              {% endif %}
             <ul class="nav pull-right">
                   {% if user.is_authenticated %}
                     <li class="navbar-text">Welcome, {{ user.username }}!</li>
