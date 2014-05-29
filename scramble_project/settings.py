@@ -31,7 +31,7 @@ print "DB:", DATABASE_PATH
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '41)4w^%fs4(8i#+yfl1=uk6nl38p(@26hx+w$)+2o90^3hjr7p'
+SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
