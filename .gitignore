@@ -5,6 +5,7 @@ book/_build/
 *.log
 *.tmpproj
 *.db
+*.map
 .DS_Store
 wsgi.py
 uwsgi_scramble.ini
