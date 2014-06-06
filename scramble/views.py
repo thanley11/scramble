@@ -6,7 +6,7 @@ from scramble.forms import UserForm, CourseForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-
+from django.shortcuts import redirect
 
 # Create your views here.
 def index(request):
@@ -93,23 +93,28 @@ def register(request):
     
 @login_required
 def new_scramble(request):
-	context = RequestContext(request)
-	
-	context_dict = {}
-	
-	if request.method == 'POST':
-		form = CourseForm(request.POST)
-		
-		if form.is_valid():
-			form.save(commit=True)
-			return index(request)
-		else:
-			print form.errors
-	else:
-		form = CourseForm()
-	
-	context_dict['form'] = form
-	return render_to_response('scramble/new_scramble.html', context_dict, context)  
+    context = RequestContext(request)
+    
+    course_list = get_course_list()
+
+    context_dict = {}
+
+    context_dict['course_list'] = course_list
+    
+    if request.method == 'POST':
+        form = CourseForm(request.POST)
+        
+        if form.is_valid():
+            form.save(commit=True)
+            return index(request)
+        else:
+            print form.errors
+    else:
+        form = CourseForm()
+    
+    context_dict['form'] = form
+    return render_to_response('scramble/new_scramble.html', context_dict, context)  
+
         
 @login_required
 def friends(request):
@@ -130,10 +135,54 @@ def profile(request):
         context = RequestContext(request)
         context_dict = {}
         return render_to_response("scramble/profile.html", context_dict, context)      
+
+def get_course_list(max_results=0, starts_with=''):
+    course_list = []
+    
+    if starts_with:
+        course_list = Course.objects.filter(name__startswith=starts_with)
+    else:
+        course_list = Course.objects.all()
+        
+
+    if max_results > 0:
+        if len(course_list) > max_results:
+            course_list = course_list[:max_results]
+    
+    return course_list
         
 @login_required
 def courses(request):
         context = RequestContext(request)
-        context_dict = {}
+
+        course_list = get_course_list()
+
+        context_dict = {'course_list' : course_list}
+
+#added last based off of views.py category rango
+        try:
+            course = Course.objects.order_by('name')
+            context_dict['course'] = course_list
+
+        except Course.DoesNotExist:
+            pass   
         
         return render_to_response("scramble/courses.html", context_dict, context)     
+
+
+
+# def track_url(request):
+#     context = RequestContext(request)
+#     course_id = None
+#     url = '/scramble/dashboard/courses'
+#     if request.method == "GET":
+#         if 'course_id' in request.GET:
+#             course_id = request.GET['course_id']
+#             try:
+#                 course = Course.objects.get(id=course_id)
+                
+#                 course.save()
+#                 url = course.url
+#             except:
+#                 pass
+#     return redirect(url)                

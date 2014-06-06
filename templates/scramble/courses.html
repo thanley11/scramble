@@ -4,8 +4,22 @@
 
 {% block dash_block %}
 <div class="hero-unit">
+	
      <br/>
-<p><h2> Courses</h2></p>
+<div id="course">
+	{% if course_list %}
+		<ul>
+			{% for course in course_list %}
+			<li><a href="#">{{course.name}}</a>
+			<br />
+			</li>
+			{% endfor %}
+		</ul>
+	{% else %}
+		<strong>You have not added any courses yet</strong>
+	{% endif %}		
+</div>
+
 </div>
 
 {% endblock %}
