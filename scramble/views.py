@@ -136,6 +136,12 @@ def profile(request):
         context_dict = {}
         return render_to_response("scramble/profile.html", context_dict, context)      
 
+@login_required
+def new_pass(request):
+        context = RequestContext(request)
+        context_dict = {}
+        return render_to_response("scramble/new_pass.html", context_dict, context)      
+
 def get_course_list(max_results=0, starts_with=''):
     course_list = []
     
@@ -171,18 +177,18 @@ def courses(request):
 
 
 
-# def track_url(request):
-#     context = RequestContext(request)
-#     course_id = None
-#     url = '/scramble/dashboard/courses'
-#     if request.method == "GET":
-#         if 'course_id' in request.GET:
-#             course_id = request.GET['course_id']
-#             try:
-#                 course = Course.objects.get(id=course_id)
+def track_url(request):
+    context = RequestContext(request)
+    course_id = None
+    url = '/scramble/dashboard/courses/'
+    if request.method == "GET":
+        if 'course_id' in request.GET:
+            course_id = request.GET['course_id']
+            try:
+                course = Course.objects.get(id=course_id)
                 
-#                 course.save()
-#                 url = course.url
-#             except:
-#                 pass
-#     return redirect(url)                
+                course.save()
+                url = course.url
+            except:
+                pass
+    return redirect(url)                

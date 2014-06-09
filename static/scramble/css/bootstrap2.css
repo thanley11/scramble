@@ -4871,3 +4871,7 @@ a.badge:hover {
 .invisible {
   visibility: hidden;
 }
+
+#profileinfo td{
+  padding:1.0em;
+}

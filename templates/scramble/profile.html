@@ -7,6 +7,29 @@
 <div class="hero-unit">
      <br/>
 <p><h2> Profile</h2></p>
+<table id="profileinfo">
+    <tr>
+        <td><h4>Username:</h4></td>
+        <td>{{user.username}}</td>
+        <td><a href="new_pass/">Change Password</a></td>
+    </tr>
+    <tr>
+        <td><h4>Email:</h4></td>
+        <td>{{user.email}}</td>
+        <td><a href="#">Change Email Address</a></td>
+    </tr>
+    <tr>
+        <td><h4>First Name:</h4></td>
+        <td>{{user.first_name}}</td>
+        <td><a href="#">Add/Change User Info</a></td>
+    </tr>
+    <tr>
+        <td><h4>Last Name:</h4></td>
+        <td>{{user.last_name}}</td>
+        
+    </tr>
+</table>
+
 </div>
 
 {% endblock %}
