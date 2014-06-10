@@ -6,7 +6,8 @@ from scramble.forms import UserForm, CourseForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.shortcuts import redirect
+from django.contrib.auth.views import password_reset
+from django.shortcuts import redirect, render
 
 # Create your views here.
 def index(request):
@@ -137,10 +138,15 @@ def profile(request):
         return render_to_response("scramble/profile.html", context_dict, context)      
 
 @login_required
-def new_pass(request):
-        context = RequestContext(request)
-        context_dict = {}
-        return render_to_response("scramble/new_pass.html", context_dict, context)      
+def forgot_password(request):
+    # context = RequestContext(request)
+    # context_dict = {}
+    # return render_to_response("scramble/forgot_password.html", context_dict, context)
+    if request.method == 'POST':
+        return password_reset(request,
+            from_email=request.POST.get('email'))
+    else:
+        return render(request, 'scramble/forgot_password.html')
 
 def get_course_list(max_results=0, starts_with=''):
     course_list = []

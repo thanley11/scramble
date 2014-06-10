@@ -11,6 +11,7 @@ urlpatterns = patterns('',
       url(r'^admin/', include(admin.site.urls)),
       url(r'^scramble/', include('scramble.urls')),
       url(r'^snippets/', include('snippets.urls')),
+      url(r'^account/', include('django.contrib.auth.urls')),
 )
 
 if settings.DEBUG:
