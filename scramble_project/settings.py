@@ -112,9 +112,9 @@ USE_TZ = True
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'spikestoyou11@gmail.com'
-EMAIL_HOST_PASSWORD = 'Wobst3r@1'
-DEFAULT_FROM_EMAIL = 'spikestoyou11@gmail.com'
+EMAIL_HOST_USER = os.environ["EMAIL_HOST_USER"]
+EMAIL_HOST_PASSWORD = os.environ["EMAIL_HOST_PASSWORD"]
+DEFAULT_FROM_EMAIL = os.environ["DEFAULT_FROM_EMAIL"]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
