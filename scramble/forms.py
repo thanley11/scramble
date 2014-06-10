@@ -12,6 +12,14 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ('username','email','password')
   
+  # Allows you to make the email unique at form submission
+    def clean_email(self):
+        email    = self.cleaned_data.get('email')
+        username = self.cleaned_data.get('username') 
+        if email and User.objects.filter(email=email).exclude(username=username).count():
+            raise forms.ValidationError(u'Email addresses must be unique')
+        return email
+            
 class CourseForm(forms.ModelForm):
     name = forms.CharField(label='name',
                             widget=forms.TextInput(attrs={'placeholder': 'Name of Scramble'}))

@@ -138,15 +138,21 @@ def profile(request):
         return render_to_response("scramble/profile.html", context_dict, context)      
 
 @login_required
-def forgot_password(request):
-    # context = RequestContext(request)
-    # context_dict = {}
-    # return render_to_response("scramble/forgot_password.html", context_dict, context)
+def change_password(request):
     if request.method == 'POST':
         return password_reset(request,
             from_email=request.POST.get('email'))
     else:
-        return render(request, 'scramble/forgot_password.html')
+        return render(request, 'scramble/change_password.html')
+
+
+@login_required
+def password_reset_done(request):
+        context = RequestContext(request)
+        context_dict = {}
+        
+        return render_to_response("scramble/password_reset_done.html", context_dict, context)    
+        
 
 def get_course_list(max_results=0, starts_with=''):
     course_list = []
