@@ -14,3 +14,4 @@ scramble.ini
 nginx_scramble.conf
 index.html
 static-files/
+.ropeproject

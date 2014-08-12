@@ -13,98 +13,98 @@ from django.shortcuts import redirect, render
 def index(request):
     context = RequestContext(request)
     context_dict = {}
-    
-    return render_to_response("scramble/index.html", context_dict, context)
-    
+
+    return render_to_response("index.html", context_dict, context)
+
 def about(request):
     context = RequestContext(request)
     context_dict = {}
-    
-    return render_to_response("scramble/about.html", context_dict, context)    
 
-@login_required  
+    return render_to_response("about.html", context_dict, context)
+
+@login_required
 def dashboard(request):
     context = RequestContext(request)
     context_dict = {}
-    
-    return render_to_response("scramble/dashboard.html", context_dict, context)    
-    
-@login_required   
+
+    return render_to_response("dashboard.html", context_dict, context)
+
+@login_required
 def players(request):
     context = RequestContext(request)
     context_dict = {}
-    
-    return render_to_response("scramble/players.html", context_dict, context)  
-    
+
+    return render_to_response("players.html", context_dict, context)
+
 def signin(request):
     context = RequestContext(request)
     context_dict = {}
-    
+
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-        
+
         user = authenticate(username=username, password=password)
-        
+
         if user is not None:
             if user.is_active:
                 login(request, user)
                 return HttpResponseRedirect('/scramble/dashboard')
             else:
                 context_dict['disabled_account'] = True
-                return render_to_response("scramble/signin.html", context_dict, context)
+                return render_to_response("signin.html", context_dict, context)
                 #Invalid login details
         else:
             print "Invalid login details: {0}, {1}".format(username,password)
             context_dict['bad_details'] = True
-            return render_to_response("scramble/signin.html", context_dict, context)
-    else:        
-        return render_to_response("scramble/signin.html", context_dict, context)     
+            return render_to_response("signin.html", context_dict, context)
+    else:
+        return render_to_response("signin.html", context_dict, context)
 
 @login_required
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect('/scramble/')
-        
+
 def register(request):
     context = RequestContext(request)
     context_dict = {}
-    
+
     registered = False;
-    
+
     if request.method == 'POST':
         user_form = UserForm(data=request.POST)
-        
+
         if user_form.is_valid():
             user = user_form.save()
-            
+
             user.set_password(user.password)
             user.save()
-    
+
             registered = True
         else:
             print user_form.errors
-    
+
     else:
         user_form = UserForm()
-    
+
     context_dict['user_form'] = user_form
     context_dict['registered'] = registered
-    return render_to_response("scramble/register.html", context_dict, context)
-    
+    return render_to_response("register.html", context_dict, context)
+
 @login_required
 def new_scramble(request):
     context = RequestContext(request)
-    
+
     course_list = get_course_list()
 
     context_dict = {}
 
     context_dict['course_list'] = course_list
-    
+
     if request.method == 'POST':
         form = CourseForm(request.POST)
-        
+
         if form.is_valid():
             form.save(commit=True)
             return index(request)
@@ -112,30 +112,30 @@ def new_scramble(request):
             print form.errors
     else:
         form = CourseForm()
-    
-    context_dict['form'] = form
-    return render_to_response('scramble/new_scramble.html', context_dict, context)  
 
-        
+    context_dict['form'] = form
+    return render_to_response('new_scramble.html', context_dict, context)
+
+
 @login_required
 def friends(request):
         context = RequestContext(request)
         context_dict = {}
-        
-        return render_to_response("scramble/friends.html", context_dict, context)    
-        
+
+        return render_to_response("friends.html", context_dict, context)
+
 @login_required
 def history(request):
         context = RequestContext(request)
         context_dict = {}
-        
-        return render_to_response("scramble/history.html", context_dict, context)   
-        
+
+        return render_to_response("history.html", context_dict, context)
+
 @login_required
 def profile(request):
         context = RequestContext(request)
         context_dict = {}
-        return render_to_response("scramble/profile.html", context_dict, context)      
+        return render_to_response("profile.html", context_dict, context)
 
 @login_required
 def change_password(request):
@@ -143,32 +143,32 @@ def change_password(request):
         return password_reset(request,
             from_email=request.POST.get('email'))
     else:
-        return render(request, 'scramble/change_password.html')
+        return render(request, 'change_password.html')
 
 
 @login_required
 def password_reset_done(request):
         context = RequestContext(request)
         context_dict = {}
-        
-        return render_to_response("scramble/password_reset_done.html", context_dict, context)    
-        
+
+        return render_to_response("password_reset_done.html", context_dict, context)
+
 
 def get_course_list(max_results=0, starts_with=''):
     course_list = []
-    
+
     if starts_with:
         course_list = Course.objects.filter(name__startswith=starts_with)
     else:
         course_list = Course.objects.all()
-        
+
 
     if max_results > 0:
         if len(course_list) > max_results:
             course_list = course_list[:max_results]
-    
+
     return course_list
-        
+
 @login_required
 def courses(request):
         context = RequestContext(request)
@@ -183,9 +183,9 @@ def courses(request):
             context_dict['course'] = course_list
 
         except Course.DoesNotExist:
-            pass   
-        
-        return render_to_response("scramble/courses.html", context_dict, context)     
+            pass
+
+        return render_to_response("courses.html", context_dict, context)
 
 
 
@@ -198,9 +198,9 @@ def track_url(request):
             course_id = request.GET['course_id']
             try:
                 course = Course.objects.get(id=course_id)
-                
+
                 course.save()
                 url = course.url
             except:
                 pass
-    return redirect(url)                
+    return redirect(url)

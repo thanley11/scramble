@@ -1,7 +1,9 @@
 Django==1.6.1
 Pygments==1.6
+South==0.8.4
+argparse==1.2.1
 djangorestframework==2.3.12
-south==0.8.4
+psycopg2==2.5.3
 virtualenv==1.6.1
 virtualenvwrapper-win==1.1.5
 wsgiref==0.1.2
