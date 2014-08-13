@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'scramble_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'scramble',
+        'NAME': 'mydb',
         'USER': 'guest',
         'PASSWORD': 'monkey',
         'HOST': 'localhost',
