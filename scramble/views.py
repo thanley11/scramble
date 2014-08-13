@@ -49,7 +49,7 @@ def signin(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect('/scramble/dashboard')
+                return HttpResponseRedirect('/dashboard')
             else:
                 context_dict['disabled_account'] = True
                 return render_to_response("signin.html", context_dict, context)
@@ -64,7 +64,7 @@ def signin(request):
 @login_required
 def user_logout(request):
     logout(request)
-    return HttpResponseRedirect('/scramble/')
+    return HttpResponseRedirect('/')
 
 def register(request):
     context = RequestContext(request)
@@ -192,7 +192,7 @@ def courses(request):
 def track_url(request):
     context = RequestContext(request)
     course_id = None
-    url = '/scramble/dashboard/courses/'
+    url = '/dashboard/courses/'
     if request.method == "GET":
         if 'course_id' in request.GET:
             course_id = request.GET['course_id']

@@ -6,7 +6,7 @@
 
 <div class="hero-unit">
 		<div class="container">
-			<form class="form-signin" id="login_form" method="POST" action="/scramble/signin/">
+			<form class="form-signin" id="login_form" method="POST" action="/signin/">
 				<h3 class="form-signin-heading">Please sign in</h3>
 				{% csrf_token %}
 				{% if bad_details %}
@@ -21,7 +21,7 @@
 				<button class="btn btn-primary" type="submit">Sign in </button>
                 <br />
                 <br />
-                <h6>Not registered? Click <a href="/scramble/register/">here</a></h6>
+                <h6>Not registered? Click <a href="/register/">here</a></h6>
 			</form>	
 
 		</div>

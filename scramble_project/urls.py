@@ -9,7 +9,7 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'helloworld.views.home', name='home'),
       url(r'^admin/', include(admin.site.urls)),
-      url(r'^scramble/', include('scramble.urls')),
+      url(r'^', include('scramble.urls')),
       url(r'^snippets/', include('snippets.urls')),
       url(r'^account/', include('django.contrib.auth.urls')),
 )
