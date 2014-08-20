@@ -38,7 +38,7 @@ DEBUG = False
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = ['www.tcharleshanley.com']
+ALLOWED_HOSTS = ['scramble.tcharleshanley.com']
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
